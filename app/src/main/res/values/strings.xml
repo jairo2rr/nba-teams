@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PronosticoBasket</string>
     <string name="nba_teams">Equipos de NBA</string>
+    <string name="txt_last_games">Últimos juegos</string>
 </resources>

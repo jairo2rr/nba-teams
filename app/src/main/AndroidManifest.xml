@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pronosticobasket">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".BasketApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +15,15 @@
         android:theme="@style/Theme.PronosticoBasket"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:parentActivityName=".ui.view.MainActivity"
+            android:name=".ui.view.DetailTeamActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

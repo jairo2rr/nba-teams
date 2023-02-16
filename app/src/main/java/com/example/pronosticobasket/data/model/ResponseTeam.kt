@@ -1,6 +1,9 @@
 package com.example.pronosticobasket.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ResponseTeam(
-    val `data`: List<Team>,
+    @SerializedName("data")
+    val teams: List<Team>,
     val meta: Meta
 )
