@@ -1,5 +1,6 @@
 package com.example.pronosticobasket.data.network
 
+import com.example.pronosticobasket.data.model.ResponseGame
 import com.example.pronosticobasket.data.model.ResponseTeam
 import com.example.pronosticobasket.data.model.Team
 import retrofit2.Response
@@ -14,4 +15,7 @@ interface BasketApiClient {
 
     @GET("teams/{ID}")
     suspend fun getInfoTeam(@Path("ID")id:Int):Response<Team>
+
+    @GET("games")
+    suspend fun getGamesTeam(@Query("team_ids") team_id:Int):Response<ResponseGame>
 }

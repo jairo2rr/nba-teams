@@ -1,5 +1,6 @@
 package com.example.pronosticobasket.data
 
+import com.example.pronosticobasket.data.model.ResponseGame
 import com.example.pronosticobasket.data.model.ResponseTeam
 import com.example.pronosticobasket.data.model.Team
 import com.example.pronosticobasket.data.network.BasketService
@@ -14,5 +15,9 @@ class BasketRepository @Inject constructor(
 
     suspend fun getInfoTeam(id:Int): Team?{
         return api.getInfoTeam(id)
+    }
+
+    suspend fun getGameTeam(team_id:Int):ResponseGame?{
+        return api.getGameTeam(team_id)
     }
 }

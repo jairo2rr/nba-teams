@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.pronosticobasket.data.model.Team
 import com.example.pronosticobasket.databinding.ActivityDetailTeamBinding
+import com.example.pronosticobasket.ui.recycler.LastGamesAdapter
 import com.example.pronosticobasket.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,11 +21,19 @@ class DetailTeamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailTeamBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val adapter = LastGamesAdapter(emptyList(),0)
         teamId = intent.getIntExtra(TEAM_ID,0)
-
+        binding.rvLastGames.adapter = adapter
         detailViewModel.team.observe(this){
+            adapter.teamId = it.id
             fillCardTeam(it)
+        }
+        binding.btnBackActivity.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+        detailViewModel.listGames.observe(this){
+            adapter.listGames = it
+            adapter.notifyDataSetChanged()
         }
 
     }
