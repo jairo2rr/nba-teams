@@ -15,10 +15,15 @@ class MainViewModel @Inject constructor(
     private val _nbaTeams = MutableLiveData<ResponseTeam?>()
     val nbaTeams:LiveData<ResponseTeam?> = _nbaTeams
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading:LiveData<Boolean> = _loading
+
     init {
         //Llamada a la api y recibir los equipos
         viewModelScope.launch {
+            _loading.value = true
             _nbaTeams.value = getAllTeams()
+            _loading.value = false
         }
     }
 }

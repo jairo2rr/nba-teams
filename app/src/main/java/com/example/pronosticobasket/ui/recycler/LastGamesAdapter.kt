@@ -23,7 +23,7 @@ class LastGamesAdapter(var listGames: List<Game>, var teamId: Int) :
             }else{
                 if(score1 > score2) "L" else "W"
             }
-            binding.tvDateGame.text = game.date
+            binding.tvDateGame.text = game.date.substring(0,9)
         }
     }
 

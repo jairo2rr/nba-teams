@@ -17,5 +17,5 @@ interface BasketApiClient {
     suspend fun getInfoTeam(@Path("ID")id:Int):Response<Team>
 
     @GET("games")
-    suspend fun getGamesTeam(@Query("team_ids") team_id:Int):Response<ResponseGame>
+    suspend fun getGamesTeam(@Query("team_ids[]") team_id:Int):Response<ResponseGame>
 }

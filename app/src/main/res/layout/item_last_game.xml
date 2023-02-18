@@ -81,6 +81,7 @@
         android:id="@+id/tvDateGame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="8sp"
         tools:text="03/02/2023"
         android:textColor="@color/gray_light"
         android:gravity="center_horizontal"

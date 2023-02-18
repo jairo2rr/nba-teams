@@ -3,6 +3,7 @@ package com.example.pronosticobasket.ui.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.example.pronosticobasket.data.model.Team
 import com.example.pronosticobasket.databinding.ActivityDetailTeamBinding
 import com.example.pronosticobasket.ui.recycler.LastGamesAdapter
@@ -34,6 +35,9 @@ class DetailTeamActivity : AppCompatActivity() {
         detailViewModel.listGames.observe(this){
             adapter.listGames = it
             adapter.notifyDataSetChanged()
+        }
+        detailViewModel.loading.observe(this){
+            binding.pbLastGames.isVisible = it
         }
 
     }

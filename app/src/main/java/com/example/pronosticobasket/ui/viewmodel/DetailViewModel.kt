@@ -21,12 +21,17 @@ class DetailViewModel @Inject constructor(
     private val _listGames = MutableLiveData<List<Game>>()
     val listGames:LiveData<List<Game>> = _listGames
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading:LiveData<Boolean> = _loading
+
     init {
         val id: Int = state["team_id"] ?: 0
         if (id > 0)
             viewModelScope.launch {
+                _loading.value = true
                 _team.value = repository.getInfoTeam(id)
                 _listGames.value = repository.getGameTeam(id)?.games ?: emptyList()
+                _loading.value = false
             }
     }
 }

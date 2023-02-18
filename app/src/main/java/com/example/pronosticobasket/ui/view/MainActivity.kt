@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.example.pronosticobasket.databinding.ActivityMainBinding
 import com.example.pronosticobasket.ui.recycler.BasketTeamsAdapter
 import com.example.pronosticobasket.ui.viewmodel.MainViewModel
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.nbaTeams.observe(this) { response ->
             adapter.listTeams = response?.teams ?: emptyList()
             adapter.notifyDataSetChanged()
+        }
+        viewModel.loading.observe(this){
+            binding.pbTeams.isVisible = it
         }
     }
 
